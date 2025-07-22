@@ -9,7 +9,8 @@
 :root {
     --primary-color: #FFC107; /* Amber */
     --secondary-color: #FFD54F; /* Lighter Amber */
-    --accent-color: #FFA000; /* Darker Amber for hover/accents */
+    --accent-color: #F57C00;   /* Vibrant Orange - NEW */
+    --hover-color: #FB8C00;    /* Lighter Orange for hover */
     --bg-color: #FFFBEF; /* Very light cream/yellow */
     --text-color: #333333;
     --heading-color: #212121;
@@ -169,7 +170,7 @@ h1 {
 }
 
 .contact-link-btn:hover {
-    background-color: var(--accent-color);
+    background-color: var(--hover-color);
     transform: translateY(-2px);
     box-shadow: var(--shadow-hover);
 }
@@ -187,7 +188,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 50px rgba(255, 193, 7, 0.4);
+    box-shadow: 0 0 50px rgba(255, 124, 0, 0.3); /* Adjusted shadow to orange */
 }
 
 .initials {
@@ -265,9 +266,13 @@ h1 {
     top: 25px;
     border-radius: 50%;
     z-index: 1;
+    transition: border-color 0.3s ease;
 }
 .timeline-item:nth-child(even)::after {
     left: -10px;
+}
+.timeline-item:hover::after {
+    border-color: var(--accent-color);
 }
 .timeline-content {
     padding: 1.5rem 2rem;
@@ -276,11 +281,19 @@ h1 {
     border-radius: 8px;
     box-shadow: var(--shadow);
     border-left: 4px solid var(--secondary-color);
+    transition: border-color 0.3s ease;
+}
+.timeline-item:hover .timeline-content {
+    border-color: var(--accent-color);
 }
 
 .timeline-item:nth-child(even) .timeline-content {
     border-left: none;
     border-right: 4px solid var(--secondary-color);
+}
+
+.timeline-item:nth-child(even):hover .timeline-content {
+    border-color: var(--accent-color);
 }
 
 .timeline-content h3 {
@@ -369,6 +382,7 @@ h1 {
 }
 .project-link:hover {
     text-decoration: underline;
+    color: var(--hover-color);
 }
 
 /* Skills Section */
@@ -400,9 +414,9 @@ h1 {
     transition: all 0.3s ease;
 }
 .skills-list span:hover {
-    background-color: var(--secondary-color);
-    border-color: var(--primary-color);
-    color: var(--heading-color);
+    background-color: var(--hover-color);
+    border-color: var(--accent-color);
+    color: #fff;
 }
 
 /* Education & Certs Section */
@@ -442,6 +456,11 @@ h1 {
     margin-bottom: 0.75rem;
     border-left: 4px solid var(--primary-color);
     font-weight: 500;
+    transition: all 0.3s ease;
+}
+.cert-list li:hover {
+    border-left-color: var(--accent-color);
+    background-color: #fff;
 }
 
 /* Footer */
@@ -568,6 +587,46 @@ h1 {
         return false;
     });
 })();
+</script>
+<script>
+// Protection against unwanted navigation in iframe content
+(function() {
+    'use strict';
+    
+    // Prevent all navigation attempts
+    document.addEventListener('click', function(e) {
+        const target = e.target.closest('a');
+        if (target && target.href) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Navigation prevented for:', target.href);
+            return false;
+        }
+    }, true);
+    
+    // Prevent form submissions
+    document.addEventListener('submit', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Form submission prevented');
+        return false;
+    }, true);
+    
+    // Override window.open
+    const originalOpen = window.open;
+    window.open = function() {
+        console.log('window.open() prevented');
+        return null;
+    };
+    
+    // Prevent hash changes that could affect parent
+    window.addEventListener('hashchange', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Hash change prevented');
+        return false;
+    });
+})();
 </script></head>
 <body>
 
@@ -598,11 +657,11 @@ h1 {
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                             Email
                         </a>
-                        <a href="https://github.com/raghuveer9303" target="_blank" class="contact-link-btn">
+                        <a href="https://github.com/raghuveer9303" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                             GitHub
                         </a>
-                         <a href="#" target="_blank" class="contact-link-btn">
+                         <a href="https://www.linkedin.com/in/yourprofile/" target="_blank" rel="noopener noreferrer" class="contact-link-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                             LinkedIn
                         </a>
@@ -658,7 +717,7 @@ h1 {
                         <div class="project-tags">
                             <span>Python</span><span>PySpark</span><span>BeautifulSoup</span><span>PostgreSQL</span><span>Streamlit</span>
                         </div>
-                        <a href="https://github.com/raghuveer9303/Web-Scraper" target="_blank" class="project-link">
+                        <a href="https://github.com/raghuveer9303/Web-Scraper" target="_blank" rel="noopener noreferrer" class="project-link">
                             View on GitHub 
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                         </a>
@@ -669,7 +728,7 @@ h1 {
                         <div class="project-tags">
                             <span>R</span><span>Regression</span><span>Data Modeling</span><span>Statistics</span>
                         </div>
-                        <a href="https://rpubs.com/Raghuveer_Venkatesh/1255695" target="_blank" class="project-link">
+                        <a href="https://rpubs.com/Raghuveer_Venkatesh/1255695" target="_blank" rel="noopener noreferrer" class="project-link">
                             View Project 
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                         </a>
