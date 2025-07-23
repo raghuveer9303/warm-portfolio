@@ -7,20 +7,20 @@
     <title>raghuveer9303's Portfolio</title>
     <style>
 :root {
-    --primary-color: #FFC107; /* Amber */
-    --secondary-color: #FFD54F; /* Lighter Amber */
-    --accent-color: #F57C00;   /* Vibrant Orange - NEW */
-    --hover-color: #FB8C00;    /* Lighter Orange for hover */
-    --bg-color: #FFFBEF; /* Very light cream/yellow */
-    --text-color: #333333;
-    --heading-color: #212121;
+    --primary-color: #8ECAE6;   /* Sky Blue */
+    --secondary-color: #BDE0FE; /* Lighter Blue */
+    --accent-color: #FFB3C1;   /* Soft Pink */
+    --primary-hover: #73B9D7;  /* Darker Sky Blue */
+    --accent-hover: #F8A0B2;   /* Darker Soft Pink */
+    --bg-color: #F7FAFC;       /* Very light blue-white */
+    --text-color: #334155;     /* Slate */
+    --heading-color: #1E293B;  /* Dark Slate */
     --card-bg: #FFFFFF;
-    --border-color: #E0E0E0;
-    --heading-font: 'Poppins', sans-serif;
-    --body-font: 'Inter', sans-serif;
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.12);
+    --border-color: #E2E8F0;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
+
 
 *,
 *::before,
@@ -50,7 +50,7 @@ body {
 
 /* Header & Navigation */
 .main-header {
-    background-color: rgba(255, 251, 239, 0.8); /* Semi-transparent bg */
+    background-color: rgba(247, 250, 252, 0.8); /* Semi-transparent bg */
     backdrop-filter: blur(10px);
     position: sticky;
     top: 0;
@@ -101,7 +101,7 @@ body {
 }
 
 .nav-link:hover, .nav-link.active {
-    color: var(--accent-color);
+    color: var(--primary-hover);
 }
 
 .nav-link:hover::after, .nav-link.active::after {
@@ -140,7 +140,7 @@ h1 {
 .subtitle {
     font-size: 1.25rem;
     font-weight: 500;
-    color: var(--accent-color);
+    color: var(--primary-hover);
     margin-bottom: 1.5rem;
 }
 
@@ -170,7 +170,7 @@ h1 {
 }
 
 .contact-link-btn:hover {
-    background-color: var(--hover-color);
+    background-color: var(--primary-hover);
     transform: translateY(-2px);
     box-shadow: var(--shadow-hover);
 }
@@ -188,7 +188,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 50px rgba(255, 124, 0, 0.3); /* Adjusted shadow to orange */
+    box-shadow: 0 0 50px rgba(142, 202, 230, 0.4); /* Adjusted shadow to blue */
 }
 
 .initials {
@@ -303,7 +303,7 @@ h1 {
 }
 .company-info {
     font-weight: 600;
-    color: var(--accent-color);
+    color: var(--primary-hover);
 }
 .date-info {
     font-size: 0.9rem;
@@ -365,11 +365,12 @@ h1 {
 }
 .project-tags span {
     background-color: var(--bg-color);
-    color: var(--accent-color);
+    color: var(--primary-hover);
     padding: 0.25rem 0.75rem;
     border-radius: 15px;
     font-size: 0.8rem;
     font-weight: 500;
+    border: 1px solid var(--secondary-color);
 }
 .project-link {
     display: inline-flex;
@@ -382,7 +383,7 @@ h1 {
 }
 .project-link:hover {
     text-decoration: underline;
-    color: var(--hover-color);
+    color: var(--accent-hover);
 }
 
 /* Skills Section */
@@ -414,8 +415,8 @@ h1 {
     transition: all 0.3s ease;
 }
 .skills-list span:hover {
-    background-color: var(--hover-color);
-    border-color: var(--accent-color);
+    background-color: var(--accent-color);
+    border-color: var(--accent-hover);
     color: #fff;
 }
 
@@ -588,6 +589,7 @@ h1 {
     });
 })();
 </script>
+
 <script>
 // Protection against unwanted navigation in iframe content
 (function() {
